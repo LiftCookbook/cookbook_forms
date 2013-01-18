@@ -1,0 +1,8 @@
+/.settings/
+/.idea_modules/
+/.idea/
+/.classpath
+/.project
+target
+
+/console.devmode.log
