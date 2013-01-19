@@ -10,6 +10,8 @@ import sitemap._
 import Loc._
 import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery._
+import org.apache.commons.fileupload.FileUploadException
+import org.apache.commons.fileupload.FileUploadBase.FileUploadIOException
 
 
 /**
@@ -25,10 +27,14 @@ class Boot {
     val entries = List(
       Menu.i("Home") / "index", // the simple way to declare a menu
 
+      Menu.i("File Upload") / "fileupload",
+      Menu.i("Ajax File Upload") / "ajaxfileupload",
+      Menu.i("Form Group") / "formgroup",
+
       // more complex because this menu allows anything in the
       // /static path to be visible
-      Menu(Loc("Static", Link(List("static"), true, "/static/index"), 
-	       "Static Content")))
+      Menu(Loc("Static", Link(List("static"), true, "/static/index"),
+        "Static Content")))
 
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
@@ -37,7 +43,7 @@ class Boot {
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
       Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
-    
+
     // Make the spinny image go away when it ends
     LiftRules.ajaxEnd =
       Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
@@ -53,6 +59,35 @@ class Boot {
     LiftRules.jsArtifacts = JQueryArtifacts
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery172
     JQueryModule.init()
+
+    // In memory is the default
+    //LiftRules.handleMimeFile = OnDiskFileParamHolder.apply
+    //println( "Temporary directory is: "+System.getProperty("java.io.tmpdir") )
+
+    /*
+     If you want to see upload progress...
+
+    def progressPrinter(bytesRead: Long, contentLength: Long, fieldIndex: Int) : Unit = {
+      println("Read %d of %d for %d" format (bytesRead, contentLength, fieldIndex))
+    }
+
+    LiftRules.progressListener = progressPrinter
+    */
+
+    LiftRules.maxMimeFileSize = 110 * 1024 * 1024
+    LiftRules.maxMimeSize =  LiftRules.maxMimeFileSize
+
+    /* To simulate file upload max size failure:
+
+    LiftRules.maxMimeFileSize = 100
+
+    // For this to work you need servlet API as a dependency in build.sbt (which it is for this project)
+    LiftRules.exceptionHandler.prepend {
+      case (_, _, x : FileUploadIOException) => ResponseWithReason(BadResponse(), "Unable to process file. Too large?")
+    }
+    */
+
+    LiftRules.dispatch.append(code.rest.AjaxFileUpload)
 
   }
 }

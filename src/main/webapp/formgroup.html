@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Form Group</title>
+</head>
+
+<body>
+
+<h1>Form group around a submit</h1>
+
+<form class="lift:FormGroupSnippet?form=post">
+
+    <p>
+        If we didn't use 'formGroup' in the snippet, the order of the fields
+        on this form would produce console output of:
+    </p>
+
+    <pre>
+        The value of name is:
+        Setting name to Jane
+    </pre>
+
+    <p>i.e., the submit function would be called before the set function.</p>
+
+    <input type="submit" value="Submit"></input>
+
+    <label for="name">
+        Your name: <input id="name" type="text" size="20"></input>
+    </label>
+
+</form>
+
+</body>
+
+</html>
