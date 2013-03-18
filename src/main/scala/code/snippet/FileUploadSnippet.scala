@@ -2,12 +2,12 @@ package code.snippet
 
 import net.liftweb.util.Helpers._
 import net.liftweb.http.SHtml._
-import net.liftweb.http.{S, OnDiskFileParamHolder, FileParamHolder}
-import net.liftweb.common.{Full, Empty, Box}
+import net.liftweb.http.{OnDiskFileParamHolder, FileParamHolder}
+import net.liftweb.common.{Loggable, Full, Empty, Box}
 import java.io.InputStream
 
 
-class FileUploadSnippet {
+class FileUploadSnippet extends Loggable {
 
   def render = {
 
@@ -16,22 +16,19 @@ class FileUploadSnippet {
     def processForm() = upload match {
 
       case Full(content : OnDiskFileParamHolder) =>
-        println("File is "+content.localFile.getAbsolutePath)
+        logger.info("File: "+content.localFile.getAbsolutePath)
         val in: InputStream = content.fileStream
-        // Work with stream here
+        // ...work with stream here...
         val wasDeleted_? = content.localFile.delete()
 
       case Full(FileParamHolder(_, mimeType, fileName, file)) =>
-        println(" %s of type %s is %d bytes long" format (fileName, mimeType, file.length))
+        logger.info("%s of type %s is %d bytes long" format (fileName, mimeType, file.length))
 
-      case _ => println("No file?")
+      case _ => logger.warn("No file?")
 
     }
 
     "#file" #> fileUpload(f => upload = Full(f)) &
       "type=submit" #> onSubmitUnit(processForm)
-
   }
-
-
 }

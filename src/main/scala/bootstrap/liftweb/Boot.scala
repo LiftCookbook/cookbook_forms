@@ -28,7 +28,6 @@ class Boot {
       Menu.i("Home") / "index", // the simple way to declare a menu
 
       Menu.i("File Upload") / "fileupload",
-      Menu.i("Ajax File Upload") / "ajaxfileupload",
       Menu.i("Form Group") / "formgroup",
 
       // more complex because this menu allows anything in the
@@ -87,7 +86,6 @@ class Boot {
     }
     */
 
-    LiftRules.dispatch.append(code.rest.AjaxFileUpload)
 
   }
 }

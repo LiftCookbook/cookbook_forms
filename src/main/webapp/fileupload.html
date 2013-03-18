@@ -1,18 +1,19 @@
-<html>
+<!DOCTYPE html>
 <head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
   <title>File Upload</title>
-  <script id="jquery" src="/classpath/jquery.js" type="text/javascript"></script>
-  <script id="json" src="/classpath/json.js" type="text/javascript"></script>
 </head>
-<body>
-<form class="lift:FileUploadSnippet?form=post;multipart=true">
+<body data-lift-content-id="main">
+<div id="main" data-lift="surround?with=default;at=content">
 
-    Select a file: <input id="file2" type="file"></input>
-
+<form data-lift="FileUploadSnippet?form=post;multipart=true">
     <label for="file">
      Select a file: <input id="file"></input>
    </label>
    <input type="submit" value="Submit"></input>
 </form>
+
+</div>
+
 </body>
 </html>
