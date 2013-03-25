@@ -4,32 +4,34 @@
     <title>Form Group</title>
 </head>
 
-<body>
+<body data-lift-content-id="main">
 
-<h1>Form group around a submit</h1>
+<div id="main" data-lift="surround?with=default;at=content">
 
-<form data-lift="FormGroupSnippet?form=post">
+    <h1>Form group around a submit</h1>
 
-    <p>
-        If we didn't use 'formGroup' in the snippet, the order of the fields
-        on this form would produce console output of:
-    </p>
+    <form data-lift="FormGroupSnippet?form=post">
 
-    <pre>
-        The value of name is:
-        Setting name to Jane
-    </pre>
+        <p>
+            If we didn't use 'formGroup' in the snippet, the order of the fields
+            on this form would produce console output of:
+        </p>
 
-    <p>i.e., the submit function would be called before the set function.</p>
+        <pre>
+            The value of name is:
+            Setting name to Jane
+        </pre>
 
-    <input type="submit" value="Submit"></input>
+        <p>i.e., the submit function would be called before the set function.</p>
 
-    <label for="name">
-        Your name: <input id="name" type="text" size="20"></input>
-    </label>
+        <input type="submit" value="Submit"></input>
 
-</form>
+        <label for="name">
+            Your name: <input id="name" type="text" size="20"></input>
+        </label>
 
+    </form>
+</div>
 </body>
 
 </html>
