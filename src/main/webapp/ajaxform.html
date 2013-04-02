@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Ajax Form processing</title>
+</head>
+<body data-lift-content-id="main">
+<div id="main" data-lift="surround?with=default;at=content">
+
+  <p>This form is processed via Ajax:</p>
+
+  <form data-lift="form.ajax">
+    <div data-lift="EchoForm">
+      <input type="text" name="name" placeholder="What's your name?">
+      <input type="submit">
+     </div>
+  </form>
+
+  <hr />
+
+  <div id="result">Your name will be echoed here</div>
+
+  <hr />
+
+  <p>This variation uses a hidden field:</p>
+
+  <form data-lift="form.ajax">
+    <div data-lift="EchoForm.renderViaHidden">
+      <input type="text" name="name" placeholder="What's your name?">
+      <button class="btn btn-primary btn-large"><i class="icon-white icon-ok"></i> Submit</button>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>

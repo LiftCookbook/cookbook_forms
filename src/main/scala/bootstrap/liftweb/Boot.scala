@@ -25,6 +25,7 @@ class Boot {
       Menu.i("Home") / "index", // the simple way to declare a menu
 
       Menu.i("Plain Form Processing") / "plain",
+      Menu.i("Ajax Form Processing") / "ajaxform",
       Menu.i("File Upload") / "fileupload",
       Menu.i("Form Group") / "formgroup",
 
