@@ -2,7 +2,7 @@ name := "Cookbook Forms"
 
 version := "1.0.0"
 
-organization := "net.liftweb"
+organization := "net.liftweb.cookbook"
 
 scalaVersion := "2.9.1"
 
@@ -15,10 +15,10 @@ seq(com.github.siasia.WebPlugin.webSettings :_*)
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 libraryDependencies ++= {
-  val liftVersion = "2.5-RC2"
+  val liftVersion = "2.5-RC4"
   Seq(
     "net.liftweb"       %% "lift-webkit"        % liftVersion        % "compile",
-    "net.liftmodules"   %% "lift-jquery-module" % (liftVersion + "-2.2"),
+    "net.liftmodules"   %% "lift-jquery-module_2.5" % "2.3",
     "org.eclipse.jetty" % "jetty-webapp"        % "8.1.7.v20120910"  % "container,test",
     "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container,test" artifacts Artifact("javax.servlet", "jar", "jar"),
     "ch.qos.logback"    % "logback-classic"     % "1.0.6",

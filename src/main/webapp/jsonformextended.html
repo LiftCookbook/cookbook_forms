@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>JSON From</title>
+</head>
+
+<body data-lift-content-id="main">
+
+<div id="main" data-lift="surround?with=default;at=content">
+
+    <h1>Json Form example</h1>
+
+
+  <div data-lift="JsonFormExtended" >
+
+    <!--  required for JSON forms processing -->
+    <script src="/classpath/jlift.js" data-lift="tail"></script>
+
+    <!--  placeholder script required to process the form -->
+    <script id="jsonScript" data-lift="tail"></script>
+
+    <div id="jsonForm">
+      <label for="name">
+        Institution
+        <input id="name" type="text" name="name" value="Royal Society" />
+      </label>
+
+      <label for="motto">
+        Motto
+        <input id="motto" type="text" name="motto" value="Nullius in verba" />
+      </label>
+
+      <input type="submit" value="Send" />
+    </div>
+
+    <button onclick="javascript:changeCase('upper')">Upper case</button>
+    <button onclick="javascript:changeCase('lower')">Lower case</button>
+    <div id="result"></div>
+
+  </div>
+
+
+</div>
+</body>
+
+</html>
