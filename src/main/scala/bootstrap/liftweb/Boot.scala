@@ -28,6 +28,7 @@ class Boot {
       Menu.i("Ajax Form Processing") / "ajaxform",
       Menu.i("JSON Form Processing") / "jsonform",
       Menu.i("JSON Form Extended") / "jsonformextended",
+      Menu.i("Disable Checkbox") / "disablecheckbox",
 
       Menu.i("File Upload") / "fileupload",
       Menu.i("Form Group") / "formgroup",
