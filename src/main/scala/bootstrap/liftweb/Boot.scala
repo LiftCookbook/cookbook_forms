@@ -26,9 +26,16 @@ class Boot {
 
       Menu.i("Plain Form Processing") / "plain",
       Menu.i("Ajax Form Processing") / "ajaxform",
+
       Menu.i("JSON Form Processing") / "jsonform",
       Menu.i("JSON Form Extended") / "jsonformextended",
+
       Menu.i("Disable Checkbox") / "disablecheckbox",
+
+      Menu.i("Multiple Selection") / "multiselect",
+      Menu.i("Multiple Selection with State") / "multiselectstateful",
+      Menu.i("Type Safe Multiple Selection") / "multiselecttypesafe",
+      Menu.i("Multiple Selection Enum") / "multiselectenum",
 
       Menu.i("File Upload") / "fileupload",
       Menu.i("Form Group") / "formgroup",
