@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>JQuery Date Picker</title>
+</head>
+<body data-lift-content-id="main">
+<div id="main" data-lift="surround?with=default;at=content">
+
+  <h3>When's your birthday?</h3>
+
+  <link data-lift="head" type="text/css" rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/css/smoothness/jquery-ui-1.10.2.custom.min.css">
+  </link>
+
+  <script data-lift="tail"
+    src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js">
+  </script>
+
+  <div data-lift="JqDatePicker?form=post">
+    <input type="date" id="birthday">
+    <input type="submit" value="Submit">
+  </div>
+
+</div>
+</body>
+</html>
