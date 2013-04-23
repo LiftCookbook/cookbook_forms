@@ -27,3 +27,8 @@ libraryDependencies ++= {
   )
 }
 
+
+libraryDependencies += "net.liftmodules" %% "widgets_2.5" % "1.3"
+
+
+

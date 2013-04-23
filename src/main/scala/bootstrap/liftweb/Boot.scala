@@ -8,7 +8,7 @@ import sitemap._
 import Loc._
 import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery._
-
+import net.liftmodules.widgets.autocomplete.AutoComplete
 
 
 /**
@@ -33,6 +33,8 @@ class Boot {
       Menu.i("Jquery Date Picker") / "jqdatepicker",
       Menu.i("HTML5 Date Picker") / "datepicker",
 
+      Menu.i("Autocomplete") / "autocomplete",
+
       Menu.i("Disable Checkbox") / "disablecheckbox",
 
       Menu.i("Multiple Selection") / "multiselect",
@@ -42,6 +44,7 @@ class Boot {
 
       Menu.i("File Upload") / "fileupload",
       Menu.i("Form Group") / "formgroup",
+
 
       // more complex because this menu allows anything in the
       // /static path to be visible
@@ -71,6 +74,10 @@ class Boot {
     LiftRules.jsArtifacts = JQueryArtifacts
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery172
     JQueryModule.init()
+
+
+    AutoComplete.init()
+
 
     // File upload settings ------------------------------------------------
 
