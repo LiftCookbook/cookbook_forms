@@ -5,7 +5,7 @@ import net.liftweb.common.Loggable
 
 import net.liftmodules.widgets.autocomplete.AutoComplete
 import net.liftweb.http.S
-import net.liftweb.http.js.JsCmds.{OnLoad, Run}
+import net.liftweb.http.js.JsCmds.Run
 
 class ProgrammingLanguages extends Loggable {
 
@@ -26,12 +26,12 @@ class ProgrammingLanguages extends Loggable {
     def submit(value: String) : Unit =
       logger.info("Value submitted: "+value)
 
-    S.appendJs(OnLoad(Run(
+    S.appendJs(Run(
       """
         |$('#autocomplete input[type=text]').bind('blur',function() {
         |  $(this).next().val($(this).val());
         |});
-      """.stripMargin)))
+      """.stripMargin))
 
     "#autocomplete" #> AutoComplete(default, suggest, submit)
   }
