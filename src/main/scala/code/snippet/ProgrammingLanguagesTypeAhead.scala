@@ -1,9 +1,9 @@
 package code.snippet
 
 import net.liftweb.util.Helpers._
-import net.liftweb.common.Loggable
+import net.liftweb.common.{Empty, Full, Loggable}
 
-import net.liftweb.http.{S, SHtml}
+import net.liftweb.http.{JsContext, S, SHtml}
 import net.liftweb.http.js.JsCmd
 import net.liftweb.http.js.JE._
 import net.liftweb.http.js.JsCmds._
@@ -27,11 +27,11 @@ class ProgrammingLanguagesTypeAhead extends Loggable {
       logger.info("Making suggestion for: "+value)
       val matches = languages.filter(_.toLowerCase.startsWith(value.toLowerCase)).map(Str)
       val js = JsArray(matches)
-      Run("if (updateUiFunction) updateUiFunction("+js.toJsCmd+");")
+      Run(js.toJsCmd)
     }
 
     // The Ajax command to work out suggestions for a given query:
-    val runSuggestion = SHtml.ajaxCall(JsVar("query"), suggest)
+    val runSuggestion = SHtml.ajaxCall(JsVar("query"), new JsContext(Full("function (d) { console.log(d); callback(eval(d)); }"),Empty), suggest)
 
     // TypeAhead arranges for the askServer function is called to get autocomplete suggestions:
     S.appendJs(Run(
@@ -43,7 +43,7 @@ class ProgrammingLanguagesTypeAhead extends Loggable {
 
     // The askServer function is defined to stash the callback function as a known value (updateUiFunction) and then
     // call our server-side function to compute suggestions:
-    "#js *" #> Function("askServer", "query" :: "callback" :: Nil, Run("updateUiFunction=callback;") & Run(runSuggestion.toJsCmd)) &
+    "#js *" #> Function("askServer", "query" :: "callback" :: Nil, Run(runSuggestion.toJsCmd)) &
     "#autocomplete" #> SHtml.text("", s => logger.info("Submitted: "+s))
 
 
