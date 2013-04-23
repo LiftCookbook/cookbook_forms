@@ -34,6 +34,7 @@ class Boot {
       Menu.i("HTML5 Date Picker") / "datepicker",
 
       Menu.i("Autocomplete") / "autocomplete",
+      Menu.i("Autocomplete with TypeAhead") / "typeahead",
 
       Menu.i("Disable Checkbox") / "disablecheckbox",
 

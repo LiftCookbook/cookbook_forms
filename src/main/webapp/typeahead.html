@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Typeahead</title>
+</head>
+<body data-lift-content-id="main">
+<div id="main" data-lift="surround?with=default;at=content">
+
+  <link data-lift="head" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+  <script data-lift="tail" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+  <h3>Select a Programming Language, using Twitter Bootstrap TypeAhead</h3>
+
+  <p>From: Scala, Scheme, Smalltalk, SuperCollider, Java, JavaScript, C, C++, Clojure, CoffeeScript, POP-11, Prolog, Python, Processing.</p>
+
+  <form data-lift="ProgrammingLanguagesTypeAhead?form=ajax">
+    <script id="js"></script>
+
+    <input id="autocomplete" type="text" data-provide="typeahead" autocomplete="off">
+    <input type="submit">
+  </form>
+
+</div>
+</body>
+</html>
