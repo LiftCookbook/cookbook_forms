@@ -1,16 +1,14 @@
 package code.snippet
 
 import net.liftweb.util.Helpers._
-import net.liftweb.common.{Empty, Full, Loggable}
+import net.liftweb.common.{Full,Empty, Loggable}
 
-import net.liftweb.http.{JsContext, S, SHtml}
-import net.liftweb.http.js.JsCmd
-import net.liftweb.http.js.JE._
+import net.liftweb.http._
 import net.liftweb.http.js.JsCmds._
 import net.liftweb.http.js.JsCmds.Run
 import net.liftweb.http.js.JE.JsVar
-import net.liftweb.http.js.JE.Str
-
+import net.liftweb.json.JsonAST._
+import net.liftweb.json.DefaultFormats
 
 class ProgrammingLanguagesTypeAhead extends Loggable {
 
@@ -23,17 +21,23 @@ class ProgrammingLanguagesTypeAhead extends Loggable {
 
   def render = {
 
-    def suggest(value: String) : JsCmd = {
+    implicit val formats = DefaultFormats
+
+    def suggest(value: JValue) : JValue = {
       logger.info("Making suggestion for: "+value)
-      val matches = languages.filter(_.toLowerCase.startsWith(value.toLowerCase)).map(Str)
-      val js = JsArray(matches)
-      Run(js.toJsCmd)
+
+      val matches = for {
+        q <- value.extractOpt[String].map(_.toLowerCase).toList
+        lang <- languages.filter(_.toLowerCase startsWith q)
+      } yield JString(lang)
+
+      JArray(matches)
     }
 
-    // The Ajax command to work out suggestions for a given query:
-    val runSuggestion = SHtml.ajaxCall(JsVar("query"), new JsContext(Full("function (d) { console.log(d); callback(eval(d)); }"),Empty), suggest)
+    val callbackContext = new JsonContext(Full("callback"),Empty)
 
-    // TypeAhead arranges for the askServer function is called to get autocomplete suggestions:
+    val runSuggestion = SHtml.jsonCall(JsVar("query"), callbackContext, suggest _ )
+
     S.appendJs(Run(
       """
         |$('#autocomplete').typeahead({
@@ -41,11 +45,8 @@ class ProgrammingLanguagesTypeAhead extends Loggable {
         |});
       """.stripMargin))
 
-    // The askServer function is defined to stash the callback function as a known value (updateUiFunction) and then
-    // call our server-side function to compute suggestions:
     "#js *" #> Function("askServer", "query" :: "callback" :: Nil, Run(runSuggestion.toJsCmd)) &
     "#autocomplete" #> SHtml.text("", s => logger.info("Submitted: "+s))
-
 
   }
 
