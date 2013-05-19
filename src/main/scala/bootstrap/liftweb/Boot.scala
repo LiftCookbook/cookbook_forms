@@ -36,6 +36,11 @@ class Boot {
       Menu.i("Autocomplete") / "autocomplete",
       Menu.i("Autocomplete with TypeAhead") / "typeahead",
 
+      Menu.i("Radio") / "radio",
+      Menu.i("Styled Radio") / "styledradio",
+      Menu.i("String Radio") / "stringradio",
+
+
       Menu.i("Disable Checkbox") / "disablecheckbox",
 
       Menu.i("Multiple Selection") / "multiselect",
