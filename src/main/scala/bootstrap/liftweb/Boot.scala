@@ -30,6 +30,8 @@ class Boot {
       Menu.i("JSON Form Processing") / "jsonform",
       Menu.i("JSON Form Extended") / "jsonformextended",
 
+      Menu.i("CSS Bound Screen") / "accountinfo",
+
       Menu.i("Jquery Date Picker") / "jqdatepicker",
       Menu.i("HTML5 Date Picker") / "datepicker",
 
@@ -39,7 +41,6 @@ class Boot {
       Menu.i("Radio") / "radio",
       Menu.i("Styled Radio") / "styledradio",
       Menu.i("String Radio") / "stringradio",
-
 
       Menu.i("Disable Checkbox") / "disablecheckbox",
 

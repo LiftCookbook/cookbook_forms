@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Custom CSS Binding Screen</title>
+</head>
+<body data-lift-content-id="main">
+<div id="main" data-lift="surround?with=default;at=content">
+
+  <div data-lift="AccountInfoEditor">
+
+    <div>
+      <!--
+      Drop regular Lift Screen elements where you want them.
+      Here we're putting the Next (or Finish) button at the top.
+      -->
+      <button class="next"></button>
+    </div>
+
+    <div class="fields">
+
+      <h2>Account Details</h2>
+
+      <!--
+        The template applied to each field is taken from
+        accounts/account_edit_field.html
+      -->
+      <div id="accountedit_firstName_field" class="large"></div>
+      <div id="accountedit_lastName_field" class="large"></div>
+
+      <!--
+      The code binds this field with Self, meaning the
+      field template is inline in this template and will
+      be different:
+      -->
+      <div id="accountedit_address_field">
+        <div class="large">The address where you like gifts sent:</div>
+        <div class="errors">
+          <div class="error"></div>
+        </div>
+        <span class="value fieldValue" style="width:10em; height:5em"></span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
